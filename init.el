@@ -36,11 +36,13 @@
 )
 (global-set-key (kbd "C-x C-k") 'rgrep)
 
-(global-set-key (kbd "C-x C-p") 'previous-buffer)
-(global-set-key (kbd "C-x C-n") 'next-buffer)
+(global-set-key (kbd "C-x p") 'tab-close)
+(global-set-key (kbd "C-x n") 'tab-new)
 
-(global-set-key (kbd "C-x p") 'tab-previous)
-(global-set-key (kbd "C-x n") 'tab-next)
+(global-set-key (kbd "C-x C-p") 'tab-previous)
+(global-set-key (kbd "C-x C-n") 'tab-next)
+
+(global-set-key (kbd "C-x C-u") 'undo)
 
 (defun yf/toggle-relative-lines ()
   (interactive)
