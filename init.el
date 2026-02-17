@@ -111,13 +111,6 @@
               (mode 16 16 :left :elide)
               " " filename-and-process)))
 
-;; Magit
-(use-package magit
-  :bind (:map magit-file-section-map
-	      ("RET" . magit-diff-visit-file-other-window)
-              :map magit-hunk-section-map
-              ("RET" . magit-diff-visit-file-other-window)))
-
 ;; Pinentry
 (setq epg-pinentry-mode 'loopback)
 (pinentry-start)
