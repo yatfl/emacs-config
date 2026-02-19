@@ -78,6 +78,15 @@
 	     markdown-toc multiple-cursors pinentry prettier-js
 	     transpose-frame xclip)))
 
+;; modus
+(setq modus-vivendi-palette-overrides
+      '((bg-main "#1e1e1e")
+        (fg-main "#d4d4d4")
+        (bg-dim  "#252525")
+        (fg-dim  "#a0a0a0")))
+
+(load-theme 'modus-vivendi :no-confirm)
+
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
