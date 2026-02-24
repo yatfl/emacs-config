@@ -23,7 +23,12 @@
 (global-set-key (kbd "C-x f") 'find-file)
 (global-set-key (kbd "C-x C-SPC") 'mc--mark-symbol-at-point)
 
+(defun yf/previous-window ()
+    (interactive)
+    (other-window -1))
+
 (global-set-key (kbd "C-x C-o") 'other-window)
+(global-set-key (kbd "C-x o") 'yf/previous-window)
 (windmove-default-keybindings)
 
 (global-set-key (kbd "C-x 4") 'transpose-frame)
@@ -85,7 +90,7 @@
         (bg-dim  "#252525")
         (fg-dim  "#a0a0a0")))
 
-(load-theme 'modus-vivendi :no-confirm)
+(load-theme 'modus-operandi :no-confirm)
 
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
