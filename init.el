@@ -49,6 +49,9 @@
 
 (global-set-key (kbd "C-x C-u") 'undo)
 
+(global-set-key (kbd "C-x d") 'list-directory)
+(global-set-key (kbd "C-x C-d") 'dired)
+
 (defun yf/toggle-relative-lines ()
   (interactive)
   (if (eq display-line-numbers 'visual)
@@ -81,7 +84,7 @@
  '(package-selected-packages
    '(company emmet-mode exec-path-from-shell ibuffer-vc magit
 	     markdown-toc multiple-cursors pinentry prettier-js
-	     transpose-frame xclip)))
+	     rainbow-mode transpose-frame xclip)))
 
 ;; modus
 (setq modus-vivendi-palette-overrides
@@ -93,7 +96,8 @@
 (load-theme 'modus-operandi :no-confirm)
 
 ;; ibuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 (setq ibuffer-expert t)
 (setq ibuffer-use-header-line t)
