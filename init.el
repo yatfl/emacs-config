@@ -5,6 +5,7 @@
 (setq column-number-mode t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(electric-pair-mode 1)
 
 (setq make-backup-files nil)
 
