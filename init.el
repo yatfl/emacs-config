@@ -21,7 +21,8 @@
 (xterm-mouse-mode)
 
 ;; Shortcuts
-(global-set-key (kbd "C-x f") 'find-file)
+(global-set-key (kbd "C-x C-f") 'find-file)
+(global-set-key (kbd "C-x C-g") 'magit-status)
 (global-set-key (kbd "C-x C-SPC") 'mc--mark-symbol-at-point)
 
 (defun yf/previous-window ()
@@ -141,8 +142,8 @@
 
 ;; multiple cursors
 (require 'multiple-cursors)
-(global-set-key (kbd "C-x C-g") 'mc/edit-lines)
-(global-set-key (kbd "C-x C-f") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C-x g") 'mc/edit-lines)
+(global-set-key (kbd "C-x f") 'mc/mark-next-word-like-this)
 
 ;; eglot
 (use-package eglot
@@ -174,8 +175,10 @@
 (use-package markdown-mode
   :bind (:map markdown-mode-map
               ("C-c C-o" . markdown-toc-follow-link-at-point)
-              ("C-x p" . tab-previous)
-              ("C-x n" . tab-next)))
+	      ("C-x p" . tab-close)
+	      ("C-x n" . tab-new)
+	      ("C-x C-p" . tab-previous)
+	      ("C-x C-n" . tab-next)))
 
 ;; markdown-toc
 (require 'dash)
