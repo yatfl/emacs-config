@@ -139,6 +139,14 @@
 (require 'ido)
 (ido-mode t)
 (fido-vertical-mode t)
+(setq ido-ignore-buffers '("^ "
+			   "\\*Completions\\*"
+			   "\\*Shell Command Output\\*"
+			   "\\*Messages\\*"
+			   "\\*Ibuffer\\*"
+			   "Async Shell Command"
+			   "^[mM]agit.+"
+			   "^\\*EGLOT.+"))
 
 ;; multiple cursors
 (require 'multiple-cursors)
@@ -203,3 +211,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "DejaVuSansM Nerd Font Mono" :foundry "nil" :slant normal :weight regular :height 120 :width normal)))))
+(put 'dired-find-alternate-file 'disabled nil)
