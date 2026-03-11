@@ -65,8 +65,8 @@
   (interactive)
   (when (and (fboundp 'prettier-js-prettify)
              (fboundp 'markdown-toc-refresh-toc))
-    (prettier-js-prettify)
     (markdown-toc-refresh-toc)
+    (prettier-js-prettify)
     (message "Buffer formatted and toc refreshed")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
