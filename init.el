@@ -156,9 +156,9 @@
 ;; eglot
 (use-package eglot
   :bind (:map eglot-mode-map
-	      ("C-c r" . eglot-rename)
-	      ("C-c o" . eglot-code-actions)
-	      ("C-c h" . eldoc))
+	      ("C-c C-r" . eglot-rename)
+	      ("C-c C-o" . eglot-code-actions)
+	      ("C-c C-h" . eldoc))
   :custom
   (eglot-ignored-server-capabilities '(:inlayHintProvider)))
 
