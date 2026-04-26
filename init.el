@@ -5,7 +5,8 @@
 (setq column-number-mode t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(electric-pair-mode 1)
+(scroll-bar-mode -1)
+;; (electric-pair-mode 1)
 
 (setq make-backup-files nil)
 
@@ -49,6 +50,9 @@
 (global-set-key (kbd "C-x C-p") 'tab-previous)
 (global-set-key (kbd "C-x C-n") 'tab-next)
 
+(global-set-key (kbd "C-S-p") 'previous-buffer)
+(global-set-key (kbd "C-S-n") 'next-buffer)
+
 (global-set-key (kbd "C-x C-u") 'undo)
 
 (global-set-key (kbd "C-x d") 'list-directory)
@@ -84,7 +88,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company emmet-mode exec-path-from-shell ibuffer-vc magit
+   '(company emmet-mode exec-path-from-shell glsl-mode ibuffer-vc magit
 	     markdown-toc multiple-cursors pinentry prettier-js
 	     rainbow-mode transpose-frame xclip)))
 
@@ -95,7 +99,7 @@
         (bg-dim  "#252525")
         (fg-dim  "#a0a0a0")))
 
-(load-theme 'modus-operandi :no-confirm)
+;; (load-theme 'modus-operandi :no-confirm)
 
 ;; ibuffer
 (global-set-key (kbd "C-x b") 'ibuffer)
@@ -109,6 +113,7 @@
 			    (mode . c-mode)
                             (mode . c++-mode)
                             (mode . js-mode)
+			    (mode . glsl-mode)
                             (mode . emacs-lisp-mode)))
 	 ("Shell" (or (mode . eshell-mode)
 		      (name . "terminal")))
