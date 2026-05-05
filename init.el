@@ -6,7 +6,11 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-;; (electric-pair-mode 1)
+
+(setq tab-bar-auto-width t)
+(setq tab-bar-tab-name-truncated-max-width 20)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-new-button-show nil)
 
 (setq make-backup-files nil)
 
