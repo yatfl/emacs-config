@@ -12,6 +12,8 @@
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-new-button-show nil)
 
+(setq set-mark-command-repeat-pop t)
+
 (setq make-backup-files nil)
 
 (setopt use-short-answer t)
@@ -46,7 +48,7 @@
   (mapcar 'kill-buffer (buffer-list))
   (delete-other-windows)
 )
-(global-set-key (kbd "C-x C-k") 'rgrep)
+(global-set-key (kbd "C-x C-k") 'imenu)
 
 (global-set-key (kbd "C-x p") 'tab-close)
 (global-set-key (kbd "C-x n") 'tab-new)
@@ -91,10 +93,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(modus-operandi))
  '(package-selected-packages
    '(company emmet-mode exec-path-from-shell glsl-mode ibuffer-vc magit
 	     markdown-toc multiple-cursors pinentry prettier-js
-	     rainbow-mode transpose-frame xclip)))
+	     rainbow-mode transpose-frame xclip yaml-mode)))
 
 ;; modus
 (setq modus-vivendi-palette-overrides
