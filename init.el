@@ -112,6 +112,11 @@
 (global-set-key (kbd "C-x b") 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
+(use-package ibuffer-vc
+  :ensure t
+  :bind (:map ibuffer-mode-map
+         ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)))
+
 (setq ibuffer-expert t)
 (setq ibuffer-use-header-line t)
 (setq ibuffer-saved-filter-groups
