@@ -29,12 +29,11 @@
 
 ;; Shortcuts
 (global-set-key (kbd "C-x C-f") 'find-file)
-(global-set-key (kbd "C-x C-g") 'magit-status)
-(global-set-key (kbd "C-x C-SPC") 'mc--mark-symbol-at-point)
+(global-set-key (kbd "C-x C-k") 'magit-status)
 
 (defun yf/previous-window ()
-    (interactive)
-    (other-window -1))
+  (interactive)
+  (other-window -1))
 
 (global-set-key (kbd "C-x C-o") 'other-window)
 (global-set-key (kbd "C-x o") 'yf/previous-window)
@@ -47,19 +46,14 @@
   (interactive)
   (mapcar 'kill-buffer (buffer-list))
   (delete-other-windows)
-)
-(global-set-key (kbd "C-x C-k") 'imenu)
+  )
+(global-set-key (kbd "C-x C-SPC") 'imenu)
 
 (global-set-key (kbd "C-x p") 'tab-close)
 (global-set-key (kbd "C-x n") 'tab-new)
 
-(global-set-key (kbd "C-x C-p") 'tab-previous)
-(global-set-key (kbd "C-x C-n") 'tab-next)
-
-(global-set-key (kbd "C-S-p") 'previous-buffer)
-(global-set-key (kbd "C-S-n") 'next-buffer)
-
-(global-set-key (kbd "C-x C-u") 'undo)
+(global-set-key (kbd "C-S-p") 'tab-previous)
+(global-set-key (kbd "C-S-n") 'tab-next)
 
 (global-set-key (kbd "C-x d") 'list-directory)
 (global-set-key (kbd "C-x C-d") 'dired)
@@ -81,11 +75,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Package
+;; package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 (require 'use-package)
+
+;; modus
+(setq modus-vivendi-palette-overrides
+      '((bg-main "#101010")
+        (fg-main "#e0e0e0")
+        (bg-dim  "#252525")
+        (fg-dim  "#a0a0a0")))
 
 ;; for package-install-selected-packages / package-autoremove
 (custom-set-variables
@@ -93,20 +94,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-operandi))
+ '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
    '(company emmet-mode exec-path-from-shell glsl-mode ibuffer-vc magit
-	     markdown-toc multiple-cursors pinentry prettier-js
-	     rainbow-mode transpose-frame xclip yaml-mode)))
-
-;; modus
-(setq modus-vivendi-palette-overrides
-      '((bg-main "#1e1e1e")
-        (fg-main "#d4d4d4")
-        (bg-dim  "#252525")
-        (fg-dim  "#a0a0a0")))
-
-;; (load-theme 'modus-operandi :no-confirm)
+	     markdown-toc pinentry rettier-js rainbow-mode
+	     transpose-frame xclip yaml-mode)))
 
 ;; ibuffer
 (global-set-key (kbd "C-x b") 'ibuffer)
@@ -115,29 +107,29 @@
 (use-package ibuffer-vc
   :ensure t
   :bind (:map ibuffer-mode-map
-         ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)))
+              ("/ V" . ibuffer-vc-set-filter-groups-by-vc-root)))
 
 (setq ibuffer-expert t)
 (setq ibuffer-use-header-line t)
 (setq ibuffer-saved-filter-groups
       '(("Default"
          ("Programming" (or (mode . markdown-mode)
-			    (mode . c-mode)
+                            (mode . c-mode)
                             (mode . c++-mode)
                             (mode . js-mode)
-			    (mode . glsl-mode)
+                            (mode . glsl-mode)
                             (mode . emacs-lisp-mode)))
-	 ("Web" (or	    (mode . html-mode)
-			    (mode . mhtml-mode)
-			    (mode . css-mode)))
-	 ("Json" (name . "\\.json" ))
-	 ("Shell" (or (mode . eshell-mode)
-		      (name . "terminal")))
+         ("Web" (or     (mode . html-mode)
+                        (mode . mhtml-mode)
+                        (mode . css-mode)))
+         ("Json" (name . "\\.json" ))
+         ("Shell" (or (mode . eshell-mode)
+                      (name . "terminal")))
          ("Dired" (mode . dired-mode))
          ("Magit" (name . "^magit"))
          ("*" (and (name . "^\\*.*\\*$")
                    (not (name . "eshell"))
-		   (not (name . "terminal")))))))
+                   (not (name . "terminal")))))))
 
 (add-hook 'ibuffer-mode-hook
           (lambda ()
@@ -161,25 +153,25 @@
 (ido-mode t)
 (fido-vertical-mode t)
 (setq ido-ignore-buffers '("^ "
-			   "\\*Completions\\*"
-			   "\\*Shell Command Output\\*"
-			   "\\*Messages\\*"
-			   "\\*Ibuffer\\*"
-			   "Async Shell Command"
-			   "^[mM]agit.+"
-			   "^\\*EGLOT.+"))
+                           "\\*Completions\\*"
+                           "\\*Shell Command Output\\*"
+                           "\\*Messages\\*"
+                           "\\*Ibuffer\\*"
+                           "Async Shell Command"
+                           "^[mM]agit.+"
+                           "^\\*EGLOT.+"))
 
 ;; multiple cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-x g") 'mc/edit-lines)
-(global-set-key (kbd "C-x f") 'mc/mark-next-word-like-this)
+;; (require 'multiple-cursors)
+;; (global-set-key (kbd "C-x g") 'mc/edit-lines)
+;; (global-set-key (kbd "C-x f") 'mc/mark-next-word-like-this)
 
 ;; eglot
 (use-package eglot
   :bind (:map eglot-mode-map
-	      ("C-c C-r" . eglot-rename)
-	      ("C-c C-o" . eglot-code-actions)
-	      ("C-c C-h" . eldoc))
+              ("C-c C-r" . eglot-rename)
+              ("C-c C-o" . eglot-code-actions)
+              ("C-c C-h" . eldoc))
   :custom
   (eglot-ignored-server-capabilities '(:inlayHintProvider)))
 
@@ -204,19 +196,20 @@
 (use-package markdown-mode
   :bind (:map markdown-mode-map
               ("C-c C-o" . markdown-toc-follow-link-at-point)
+
 	      ("C-x p" . tab-close)
 	      ("C-x n" . tab-new)
-	      ("C-x C-p" . tab-previous)
-	      ("C-x C-n" . tab-next)))
+              ("C-S-p" . tab-previous)
+              ("C-S-n" . tab-next)))
 
 ;; markdown-toc
 (require 'dash)
 (setq markdown-toc-user-toc-structure-manipulation-fn
       (lambda (toc-structure)
-	(-filter (lambda (l)
-		   (let ((index (car l)))
-		     (<= 1 index)))
-		 toc-structure)))
+        (-filter (lambda (l)
+                   (let ((index (car l)))
+                     (<= 1 index)))
+                 toc-structure)))
 
 ;; C++
 (setq c-basic-offset 4)
